@@ -9,36 +9,35 @@
   (println "The rules!")
   (play rules)
   (println "Need the rules again? (y/n)")
-  (let [rules-repeat (read-line)]
+  (let [response (read-line)]
     (cond
-      (= rules-repeat "y")
+      (= response "y")
         (do (explain-rules))
-      (= rules-repeat "n")
+      (= response "n")
         (do (println "Excellent!"))
       :else
         (do (explain-rules)))))
+
+(defn rules-enquiry []
+  (println "Do you know the rules? (y/n)")
+  (let [response (read-line)]
+  (cond
+    (= response "n")
+      (do (explain-rules))
+    (= response "y")
+      (do (println "Alright let's get right into a game!")))))
 
 (defn setup-game []
   (println "Are you ready to play Rock Paper Scissors Lizard Spock? (y/n)")
   (let [response (read-line)]
     (cond
       (= response "y")
-        (do (loop []
-            (println "Do you know the rules? (y/n)")
-            (let [rules-indication (read-line)]
-            (cond
-              (= rules-indication "n")
-                (do (explain-rules))
-              (= rules-indication "y")
-                (do (println "Alright let's get right into a game!"))
-              :else
-                (recur))))
+        (do (rules-enquiry))
       (= response "n")
         (do (println "Alright, let us know when you are ready!"))
       :else
-        (setup-game)))))
+        (setup-game))))
 
 (defn -main
-  "I don't do a whole lot ... yet."
   [& args]
   (setup-game))
