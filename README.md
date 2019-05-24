@@ -4,6 +4,7 @@ The game of rock, paper, scissors, lizard, Spock for the Arnold Clark student ha
 ## Requirements
 To run you will need the following
 * Leiningen
+* Speakers
 
 ## Running the application
 Navigate to the root of the application and run the following command
